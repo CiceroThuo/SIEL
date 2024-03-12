@@ -1,0 +1,62 @@
+.heading{
+    width:100%;
+    margin: top 0;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-size-adjust: 100px;
+    color:black;
+    background-color:aquamarine
+    
+
+
+}
+.Siel{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-evenly;
+    background-color: black;
+    color: white;
+    text-decoration: solid;
+    font-size: 40px;
+}
+.Win{
+    width: 100%;
+   display: flex;
+    align-items:center;
+    justify-content: center;
+    justify-content:space-evenly ;
+    flex-direction: row;
+}
+.Quote{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+
+}
+.footer{
+    width: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content:space-evenly;
+    flex-direction: row;
+}
+.footer-item{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-evenly;
+    gap : 10px;
+}
