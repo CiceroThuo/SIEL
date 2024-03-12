@@ -3,7 +3,7 @@ import pools from "../../assets/pools.jpg"
 import news from "../../assets/NextExperience.jpg"
 import showdown from "../../assets/GOA.jpg"
 import videoSource from "../../assets/video.mp4"
-import video from "../../assets/AfterNext.mp4"
+
 const Newscomponent = () => {
     return (
         <div className="section">
@@ -27,10 +27,7 @@ const Newscomponent = () => {
                 <h1>Curtain Raiser</h1>
                 <p>Where The Showdown Begins</p>
                 <img src={showdown} />
-                <video width="1000" controls>
-          <source src={video} type="video/mp4" />
-          
-        </video>
+             
 
             </div>
             <div className="preps">
