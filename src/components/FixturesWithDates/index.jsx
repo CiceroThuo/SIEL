@@ -1,30 +1,37 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import "./index.css"
+import { TeamContext } from '../../context/TeamContext';
 
-const FixtureWithDates = ({ uptownTeams, eastlandsTeams }) => {
+
+const FixtureWithDates = () => {
+  const { StandingsData } = useContext(TeamContext);
+
+  // Function to shuffle the elements of an array
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array]; // Create a copy of the original array
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1)); // Generate a random index
+      [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]]; // Swap elements
+    }
+    return shuffledArray;
+  };
+
   // Generate fixtures for both divisions
-  const generateFixturesWithDates = (teams) => {
+  const generateFixturesWithDates = (uptownTeams, eastlandsTeams) => {
     const fixtures = [];
     const weekends = getWeekendsOfYear(new Date().getFullYear());
-    let weekendIndex = 0;
-    let matchups = [];
 
-
-    for (let i = 0; i < teams.length; i++) {
-      for (let j = i + 1; j < teams.length; j++) {
-        matchups.push({ homeTeam: teams[i].name, awayTeam: teams[j].name });
-      }
-    }
-
-    
     for (const weekend of weekends) {
       const weekendFixtures = [];
-      for (let i = 0; i < matchups.length; i++) {
-        const fixture = matchups[i];
-        weekendFixtures.push({ ...fixture, date: weekend });
-        matchups.splice(i, 1);
-        i--; 
+      const shuffledUptownTeams = shuffleArray([...uptownTeams]);
+      const shuffledEastlandsTeams = shuffleArray([...eastlandsTeams]);
+
+      for (let i = 0; i < shuffledUptownTeams.length; i++) {
+        const homeTeam = shuffledUptownTeams[i];
+        const awayTeam = shuffledEastlandsTeams[i % shuffledEastlandsTeams.length]; // Ensure each Uptown team plays an Eastlands team
+        weekendFixtures.push({ homeTeam: homeTeam.name, awayTeam: awayTeam.name, date: weekend });
       }
+
       fixtures.push(weekendFixtures);
     }
 
@@ -44,38 +51,17 @@ const FixtureWithDates = ({ uptownTeams, eastlandsTeams }) => {
     return weekends;
   };
 
-  const uptownFixtures = generateFixturesWithDates(uptownTeams);
-  const eastlandsFixtures = generateFixturesWithDates(eastlandsTeams);
+  // Check if StandingsData is defined
+  if (!StandingsData || StandingsData.length < 2) {
+    return <div>Error: Standings data is not available.</div>;
+  }
+
+  const uptownFixtures = generateFixturesWithDates(StandingsData[0].Uptown, StandingsData[1].Eastlands);
 
   return (
     <div>
-      <h2>Uptown Fixtures</h2>
+      <h2>Uptown & Eastlands Fixtures</h2>
       {uptownFixtures.map((weekendFixtures, index) => (
-        <div key={index}>
-          <h3>Weekend {index + 1}</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Home Team</th>
-                <th>Away Team</th>
-              </tr>
-            </thead>
-            <tbody>
-              {weekendFixtures.map((fixture, idx) => (
-                <tr key={idx}>
-                  <td>{fixture.date.toDateString()}</td>
-                  <td>{fixture.homeTeam}</td>
-                  <td>{fixture.awayTeam}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      ))}
-
-      <h2>Eastlands Fixtures</h2>
-      {eastlandsFixtures.map((weekendFixtures, index) => (
         <div key={index}>
           <h3>Weekend {index + 1}</h3>
           <table>

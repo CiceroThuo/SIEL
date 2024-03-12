@@ -6,8 +6,8 @@
     justify-content: center;
     flex-direction: column;
     text-size-adjust: 100px;
-    color:black;
-    background-color:aquamarine
+    color:whitesmoke;
+    background-color:black;
     
 
 
@@ -15,35 +15,87 @@
 .Siel{
     display: flex;
     align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    justify-content: space-evenly;
-    background-color: black;
-    color: white;
+    justify-content: space-between;
+    background-color:black;
+    color:wheat;
     text-decoration: solid;
-    font-size: 40px;
-}
-.Win{
+    flex-wrap: wrap;
+    font-size: larger;
     width: 100%;
-   display: flex;
-    align-items:center;
-    justify-content: center;
-    justify-content:space-evenly ;
-    flex-direction: row;
+    .league-logo{
+        width: 50%;
+        .logoless{
+            width: 50%;
+            width: 50%;
+            height: 100%;
+            object-fit: contain
+        }
+        .Quote{
+            width: 50%;
+            .quote-img{
+                width: 50%;
+                height: 100%;
+                object-fit: contain;
+            }
+
+
+    }
+
+    
+    
+
+
+};
 }
-.Quote{
-    width: 100%;
+.Twende{
     display: flex;
     align-items: center;
-    justify-content: center;
-    justify-content: space-evenly;
-    flex-direction: row;
-
+    justify-content: space-between;
+    
+    background-color:black;
+    color:wheat;
+    text-decoration: solid;
+    font-size: larger;
+    
+    
+    width: 100%;
+    .Gria{
+        width: 50%;
+        .Gria-img{
+            
+            width: 50%;
+            height: 100%;
+            object-fit: contain;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+    .Win {
+        width: 50%;
+    
+        .win-img {
+            width: 50%;
+            height: 100%;
+            object-fit: contain;
+        }
+    };
 }
+
+
+
+
+
+  
+
+
+
 .footer{
+   
+    padding: 0%;
     width: 100%;
     background-color: black;
-    color: white;
+    color:wheat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,8 +105,8 @@
 .footer-item{
     display: flex;
     flex-direction: column;
-    background-color: black;
-    color: white;
+    background-color:black;
+    color:wheat;
     align-items: center;
     justify-content: center;
     justify-content: space-evenly;

@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import News from "./pages/News.jsx";
 import Fixtures from "./pages/Fixtures.jsx";
 import Standings from "./pages/Standings.jsx";
+import { TeamProvider } from "./context/TeamContext.jsx";
 
 const urls = [
   {
@@ -21,8 +22,8 @@ const urls = [
     element: <Standings />,
   },
   {
-    path:"/news",
-    element:<News />,
+    path: "/news",
+    element: <News />,
   },
 ];
 const paths = createBrowserRouter(urls);
@@ -30,6 +31,8 @@ const paths = createBrowserRouter(urls);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={paths} />
+    <TeamProvider>
+      <RouterProvider router={paths} />
+    </TeamProvider>
   </React.StrictMode>,
 )
